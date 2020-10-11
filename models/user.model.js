@@ -24,7 +24,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING, // VARCHAR(255)
       allowNull: false,
       validate: {
-        isAlpha: true,
         len: [2,100]
       }
     }

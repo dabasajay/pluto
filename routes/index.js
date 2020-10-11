@@ -7,7 +7,7 @@ router.use('/auth', require('./auth/'));
 // For all routes: `/user/<>`
 router.use('/user', require('./user/'));
 
-// For all routes: `/profile/<>`
-router.use('/profile', require('./profile/'));
+// For all routes: `/project/<>`
+router.use('/project', require('./project/'));
 
 module.exports = router;

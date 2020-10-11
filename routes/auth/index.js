@@ -6,7 +6,7 @@ const db = require('../../sequelize');
 const logger = require('../../utils/logger');
 
 /*
-  @route: /auth/
+  @route: POST /auth/
   @desc: Authenticate a user using credentials
   @access: public
 */
@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
       return res.status(401).send('Wrong password!')
     }
   } catch (err) {
-    logger.error(err);
+    logger.error(err.stack);
     res.status(400).send('Error logging in!')
   }
 });

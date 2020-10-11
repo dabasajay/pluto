@@ -6,11 +6,11 @@ const db = require('../../sequelize');
 const logger = require('../../utils/logger');
 
 /*
-  @route: /user/
+  @route: POST /user/
   @desc: Create a new user
   @access: public
 */
-router.post('/', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
     const { name, username, password } = req.body;
     const User = db.models.User;

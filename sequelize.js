@@ -17,13 +17,21 @@ const sequelize = new Sequelize(
 // All models
 const modelsDefinition = [
   require('./models/user.model'),
-  require('./models/profile.model'),
+  require('./models/project.model'),
 ]
 
 for (const modelDefinition of modelsDefinition) {
   // Pass connection to this model definition
   modelDefinition(sequelize)
 }
+
+// Associations
+const { User, Project } = sequelize.models;
+User.hasMany(Project, {
+  foreignKey: {
+    allowNull: false
+  }
+});
 
 // Sync to DB
 // sequelize.sync({ force: true });
