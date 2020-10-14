@@ -23,21 +23,23 @@ Pluto users are able to
 <ul type="square">
 	<li>Secure JWT-based authentication and authorization.</li>
 	<li>Well-defined CRUD APIs.</li>
-	<li>Uses feature-rich, open-source mysql relational database.</li>
+	<li>It uses a relational database. Even though the project was build using MySQL, it's really independent of the underlying database, as long as it's a sql-based database and supported by Sequelize library. Some of the supported databases are PostgreSQL, MariaDB, SQLite3, Microsoft SQL Server.</li>
 	<li>Robust error handling.</li>
 	<li>Persistent logging of events and stack traces.</li>
-	<li><code>.env</code> configuration file for environment variables.</li>
+	<li><strong><code>.env</code></strong> configuration file for environment variables.</li>
 </ul>
 
 ## 2. ER Model
 
 <p align="center">
-  <img src="https://github.com/dabasajay/pluto/raw/master/docs/model/er_model.png" width="85%" title="ER Model of Pluto" alt="ER Model of Pluto">
+  <img src="https://github.com/dabasajay/pluto/raw/master/docs/model/er_model.png" width="70%" title="ER Model of Pluto" alt="ER Model of Pluto">
 </p>
 
 ## 3. References
 
 <ul type="square">
+	<li><a href="https://reactjs.org/docs/getting-started.html">React Docs</a></li>
 	<li><a href="https://expressjs.com/en/api.html">ExpressJS Docs</a></li>
 	<li><a href="https://sequelize.org/master/manual/getting-started.html">Sequelize Docs</a></li>
+	<li><a href="https://github.com/Redocly/redoc">Redoc</a></li>
 </ul>
