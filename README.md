@@ -26,7 +26,7 @@ Pluto users are able to
 <ul type="square">
 	<li>Secure JWT-based authentication and authorization.</li>
 	<li>Well-defined CRUD APIs.</li>
-	<li>It uses a relational database. Even though the project was build using MySQL, it's really independent of the underlying database, as long as it's a sql-based database and supported by Sequelize library. Some of the supported databases are PostgreSQL, MariaDB, SQLite3, Microsoft SQL Server.</li>
+	<li>It uses a relational database. Even though the project was built using MySQL, it's really independent of the underlying database, as long as it's a sql database and supported by Sequelize library. Some of the supported databases are PostgreSQL, MariaDB, SQLite3, Microsoft SQL Server.</li>
 	<li>Robust error handling.</li>
 	<li>Persistent logging of events and stack traces.</li>
 	<li><strong><code>.env</code></strong> configuration file for environment variables.</li>
@@ -35,7 +35,7 @@ Pluto users are able to
 ## 2. ER Model
 
 <p align="center">
-  <img src="https://github.com/dabasajay/pluto/raw/master/docs/model/er_model.png" width="60%" title="ER Model of Pluto" alt="ER Model of Pluto">
+  <img src="https://github.com/dabasajay/pluto/raw/master/docs/model/er_model.png" width="70%" title="ER Model of Pluto" alt="ER Model of Pluto">
 </p>
 
 ## 3. Tools and Tech used
