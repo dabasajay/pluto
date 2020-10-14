@@ -18,7 +18,8 @@ const sequelize = new Sequelize(
 const modelsDefinition = [
   require('./models/user.model'),
   require('./models/project.model'),
-]
+  require('./models/comment.model'),
+];
 
 for (const modelDefinition of modelsDefinition) {
   // Pass connection to this model definition
@@ -26,10 +27,42 @@ for (const modelDefinition of modelsDefinition) {
 }
 
 // Associations
-const { User, Project } = sequelize.models;
-User.hasMany(Project, {
+const { User, Project, Comment } = sequelize.models;
+
+Project.belongsTo(User, {
   foreignKey: {
-    allowNull: false
+    name: 'UserId',
+    allowNull: false,
+  }
+});
+
+Comment.belongsTo(User, {
+  foreignKey: {
+    name: 'UserId',
+    allowNull: false,
+  }
+});
+
+Comment.belongsTo(Project, {
+  foreignKey: {
+    name: 'ProjectId',
+    allowNull: false,
+  }
+});
+
+User.belongsToMany(Project, {
+  through: 'User_likes_Project',
+  foreignKey: {
+    name: 'UserId',
+    allowNull: false,
+  }
+});
+
+Project.belongsToMany(User, {
+  through: 'User_likes_Project',
+  foreignKey: {
+    name: 'ProjectId',
+    allowNull: false,
   }
 });
 

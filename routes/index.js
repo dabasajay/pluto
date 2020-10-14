@@ -10,4 +10,10 @@ router.use('/user', require('./user/'));
 // For all routes: `/project/<>`
 router.use('/project', require('./project/'));
 
+// For all routes: `/comment/<>`
+router.use('/comment', require('./comment/'));
+
+// For all routes: `/like/<>`
+router.use('/like', require('./like/'));
+
 module.exports = router;

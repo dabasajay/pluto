@@ -3,56 +3,85 @@ const router = express.Router();
 const db = require('../../sequelize');
 const passport = require('passport');
 const logger = require('../../utils/logger');
+const { API_MESSAGES } = require('../../constants');
 
 /*
-  @route: GET /project/
-  @desc: Find all projects
+  @route: GET /project/user/:userId
+  @desc: Get all projects of a user
   @access: public
 */
-router.get('/', async (req, res) => {
+router.get('/user/:userId', async (req, res) => {
   try {
+    const { userId } = req.params;
+    const UserId = parseInt(userId, 10);
+    if (isNaN(UserId)) {
+      return res
+        .status(400)
+        .json({
+          message: API_MESSAGES.INVALID_INPUT,
+        });
+    }
     const Project = db.models.Project;
     const foundProjects = await Project.findAll({
       where: {
-        ...req.query
+        UserId
       }
     });
     const projects = [];
+    // Get objects in plain form.
     foundProjects.forEach(project => projects.push(project.get({ plain: true })));
-    return res.status(200).json({
-      projects
-    })
+    return res
+      .status(200)
+      .json({
+        projects
+      });
   } catch (err) {
     logger.error(err.stack);
-    res.status(400).send('Error fetching projects!')
+    return res
+      .status(400)
+      .json({
+        message: API_MESSAGES.UNKNOWN_ERROR
+      });
   }
 });
 
 /*
-  @route: GET /project/:projectID
-  @desc: Get a project using id
+  @route: GET /project/:projectId
+  @desc: Get a project by id
   @access: public
 */
-router.get('/:projectID', async (req, res) => {
+router.get('/:projectId', async (req, res) => {
   try {
-    const { projectID } = req.params;
-    const id = parseInt(projectID, 10);
+    const { projectId } = req.params;
+    const id = parseInt(projectId, 10);
     if (isNaN(id)) {
-      return res.status(400).json({
-        message: 'Invalid project id!'
-      })
+      return res
+        .status(400)
+        .json({
+          message: API_MESSAGES.INVALID_INPUT,
+        });
     }
     const Project = db.models.Project;
     const foundProject = await Project.findByPk(id);
     if (foundProject == null) {
-      return res.status(404).send({
-        message: 'Project does not exist!'
-      })
+      return res
+        .status(404)
+        .json({
+          message: API_MESSAGES.NOT_FOUND
+        });
     }
-    return res.status(200).json(foundProject.get({ plain: true }))
+    return res
+      .status(200)
+      .json({
+        project: foundProject.get({ plain: true })
+      });
   } catch (err) {
     logger.error(err.stack);
-    res.status(400).send('Error fetching project!')
+    return res
+      .status(400)
+      .json({
+        message: API_MESSAGES.UNKNOWN_ERROR
+      });
   }
 });
 
@@ -66,11 +95,25 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
     const { name, url, shortDesc, longDesc } = req.body;
     const { id: UserId } = req.user;
     const Project = db.models.Project;
-    const project = await Project.create({ name, url, shortDesc, longDesc, UserId });
-    return res.status(200).json(project.get({ plain: true }));
+    const project = await Project.create({
+      name,
+      url,
+      shortDesc,
+      longDesc,
+      UserId
+    });
+    return res
+      .status(200)
+      .json({
+        project: project.get({ plain: true })
+      });
   } catch (err) {
     logger.error(err.stack);
-    res.status(400).send('Error creating project!')
+    return res
+      .status(400)
+      .json({
+        message: API_MESSAGES.UNKNOWN_ERROR
+      });
   }
 });
 
@@ -79,37 +122,56 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
   @desc: Update a project
   @access: private
 */
-router.patch('/:projectID', passport.authenticate('jwt', { session: false }), async (req, res) => {
+router.patch('/:projectId', passport.authenticate('jwt', { session: false }), async (req, res) => {
   try {
-    const { projectID } = req.params;
-    const id = parseInt(projectID, 10);
+    const { projectId } = req.params;
+    const id = parseInt(projectId, 10);
     if (isNaN(id)) {
-      return res.status(400).json({
-        message: 'Invalid project id!'
-      })
+      return res
+        .status(400)
+        .json({
+          message: API_MESSAGES.INVALID_INPUT,
+        });
     }
     const Project = db.models.Project;
     const foundProject = await Project.findByPk(id);
     if (foundProject == null) {
-      return res.status(404).send({
-        message: 'Project does not exist!'
-      })
+      return res
+        .status(404)
+        .json({
+          message: API_MESSAGES.NOT_FOUND,
+        });
     }
     const projectData = foundProject.get({ plain: true });
     const { id: UserId } = req.user;
     if (projectData.UserId !== UserId) {
-      return res.status(401).send({
-        message: 'Unauthorized action! This project does not belong to you.'
-      })
+      return res
+        .status(401)
+        .json({
+          message: API_MESSAGES.NOT_AUTHORIZED,
+        })
     }
+    const newProjectData = req.body;
+    // Don't allow these fields to be updated.
+    delete newProjectData['id'];
+    delete newProjectData['likes'];
+    delete newProjectData['comments'];
     const updatedProject = await foundProject.update({
       ...projectData,
-      ...req.body
+      ...newProjectData,
     })
-    return res.status(200).json(updatedProject.get({ plain: true }));
+    return res
+      .status(200)
+      .json({
+        project: updatedProject.get({ plain: true }),
+      });
   } catch (err) {
     logger.error(err.stack);
-    res.status(400).send('Error updating project!')
+    return res
+      .status(400)
+      .json({
+        message: API_MESSAGES.UNKNOWN_ERROR
+      });
   }
 });
 
@@ -118,36 +180,48 @@ router.patch('/:projectID', passport.authenticate('jwt', { session: false }), as
   @desc: Delete a project
   @access: private
 */
-router.delete('/:projectID', passport.authenticate('jwt', { session: false }), async (req, res) => {
+router.delete('/:projectId', passport.authenticate('jwt', { session: false }), async (req, res) => {
   try {
-    const { projectID } = req.params;
-    const id = parseInt(projectID, 10);
+    const { projectId } = req.params;
+    const id = parseInt(projectId, 10);
     if (isNaN(id)) {
-      return res.status(400).json({
-        message: 'Invalid project id!'
-      })
+      return res
+        .status(400)
+        .json({
+          message: API_MESSAGES.INVALID_INPUT,
+        })
     }
     const Project = db.models.Project;
     const foundProject = await Project.findByPk(id);
     if (foundProject == null) {
-      return res.status(404).send({
-        message: 'Project does not exist!'
-      })
+      return res
+        .status(404)
+        .json({
+          message: API_MESSAGES.NOT_FOUND,
+        })
     }
     const projectData = foundProject.get({ plain: true });
     const { id: UserId } = req.user;
     if (projectData.UserId !== UserId) {
-      return res.status(401).send({
-        message: 'Unauthorized action! This project does not belong to you.'
-      })
+      return res
+        .status(401)
+        .json({
+          message: API_MESSAGES.NOT_AUTHORIZED,
+        })
     }
     await foundProject.destroy();
-    return res.status(200).json({
-      message: "Successfully deleted the project."
-    });
+    return res
+      .status(200)
+      .json({
+        message: API_MESSAGES.SUCCESSFULLY_DELETED,
+      });
   } catch (err) {
     logger.error(err.stack);
-    res.status(400).send('Error updating project!')
+    return res
+      .status(400)
+      .json({
+        message: API_MESSAGES.UNKNOWN_ERROR
+      });
   }
 });
 

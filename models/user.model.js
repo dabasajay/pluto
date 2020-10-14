@@ -7,25 +7,67 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
+    name: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+      validate: {
+        len: [2,50]
+      }
+    },
+    avatar: {
+      type: DataTypes.TEXT,
+      validate: {
+        isUrl: true,
+      }
+    },
     username: {
-      type: DataTypes.STRING, // VARCHAR(255)
+      type: DataTypes.STRING(50),
       allowNull: false,
       unique: true,
       validate: {
-        isAlphanumeric: true,
-        len: [8,100]
+        len: [4,50]
       }
     },
-    password: {
-      type: DataTypes.STRING, // VARCHAR(255)
+    password: { // Don't validate here. We're going to hash password in application login. Length range - [4,50]
+      type: DataTypes.TEXT,
       allowNull: false,
     },
-    name: {
-      type: DataTypes.STRING, // VARCHAR(255)
+    bio: {
+      type: DataTypes.STRING(150),
+      validate: {
+        len: [10,150]
+      }
+    },
+    location: {
+      type: DataTypes.STRING(100),
+      validate: {
+        len: [10,100]
+      }
+    },
+    college: {
+      type: DataTypes.STRING(100),
       allowNull: false,
       validate: {
         len: [2,100]
       }
-    }
+    },
+    website: {
+      type: DataTypes.TEXT,
+      validate: {
+        isUrl: true,
+      }
+    },
+    linkedin: {
+      type: DataTypes.TEXT,
+      validate: {
+        isUrl: true,
+      }
+    },
+    github: {
+      type: DataTypes.TEXT,
+      validate: {
+        isUrl: true,
+      }
+    },
   });
 };
