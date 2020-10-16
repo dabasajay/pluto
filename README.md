@@ -12,6 +12,7 @@ Pluto users are able to
   <li>CRUD operations on their projects.</li>
   <li>like and comment on the projects.</li>
   <li>search other projects based on technology tags, description, college, etc.</li>
+  <li>see hot :fire: projects</li>
 </ul>
 
 ## Table of Contents
@@ -36,7 +37,7 @@ Pluto users are able to
 ## 2. ER Model
 
 <p align="center">
-  <img src="https://github.com/dabasajay/pluto/raw/master/docs/model/er_model.png" width="70%" title="ER Model of Pluto" alt="ER Model of Pluto">
+  <img src="https://github.com/dabasajay/pluto/raw/master/pluto-backend/docs/model/er_model.png" width="70%" title="ER Model of Pluto" alt="ER Model of Pluto">
 </p>
 
 ## 3. Tools and Tech used
@@ -47,7 +48,6 @@ Pluto users are able to
   <li>MySQL database with Sequelize library for connection.</li>
 	<li>MySQL workbench tool for ER modeling and database management.</li>
   <li>Postman for API testing and documentation</li>
-  <li>Jest library for testing</li>
   <li>Winston logger</li>
 </ul>
 
@@ -56,8 +56,8 @@ Pluto users are able to
 
 <ul type="square">
 	<li><a href="https://reactjs.org/docs/getting-started.html">React</a></li>
-	<li><a href="https://material-ui.com/">Material UI</a></li>
+	<li><a href="https://ant.design/components/overview/">Ant Design</a></li>
 	<li><a href="https://expressjs.com/en/api.html">Express Framework</a></li>
 	<li><a href="https://sequelize.org/master/manual/getting-started.html">Sequelize</a></li>
-	<li><a href="https://github.com/Redocly/redoc">Redoc</a></li>
+	<li><a href="https://www.freepik.com/">Freepik</a></li>
 </ul>
