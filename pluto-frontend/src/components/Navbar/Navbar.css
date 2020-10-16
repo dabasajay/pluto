@@ -1,0 +1,14 @@
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.Navbar__logo {
+  font-size: 24px;
+  font-family: 'Merienda One', cursive;
+}
+
+.Navbar__items > ul {
+  border: none;
+}

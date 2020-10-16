@@ -1,0 +1,81 @@
+.Auth__sider {
+  background-color: var(--color-pink-light);
+  height: 100vh;
+  flex: 0 0 450px !important;
+  max-width: 450px !important;
+  min-width: 450px !important;
+  width: 450px !important;
+}
+
+.Auth__sider--login {
+  background-color: var(--color-orange);
+}
+
+
+.Auth__sider-content {
+  padding: 40px;
+}
+
+.Auth__sider-content > h1 {
+  color: var(--color-pink-dark);
+  font-family: 'Merienda One', cursive;
+}
+
+.Auth__sider-content--login > h1 {
+  color: var(--color-orange-dark);
+}
+
+.Auth__sider-content > span {
+  font-size: 24px;
+  color: var(--color-pink-darker);
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.Auth__sider-content--login > span {
+  color: var(--color-orange-darker);
+}
+
+
+.Auth__sider2 {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  padding-top: 80px;
+}
+
+.Auth__sider2-content > div {
+  width: 400px;
+}
+
+.Auth__sider2-content > div > form button {
+  width: 100%;
+}
+
+.Auth__content {
+  background-color: var(--color-pink);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.Auth__content-login {
+  background-image: url('../../assets/img/welcome_login.jpg');
+}
+
+.Auth__content-signup {
+  background-image: url('../../assets/img/welcome.jpg');
+}
+
+.Auth__sider-content--lockButton {
+  text-align: center;
+}
+
+.Auth__sider-content--lockButton svg {
+  font-size: 30px;
+  padding: 5px;
+  margin-bottom: 8px;
+  border-radius: 100%;
+  color: white;
+  background-color: var(--color-red);
+}

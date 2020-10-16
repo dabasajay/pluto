@@ -1,0 +1,54 @@
+.Landing__sider {
+  background-color: white;
+  flex: 0 0 450px !important;
+  height: 560px !important;
+  max-width: 450px !important;
+  min-width: 450px !important;
+  width: 450px !important;
+  padding: 90px 0 0 55px;
+}
+
+.Landing__sider .ant-statistic-title {
+  color: var(--color-pink-darker);
+}
+
+.Landing__sider .ant-statistic-content-value-int{
+  color: var(--color-blue-darkest);
+}
+
+.Landing__sider .ant-statistic:nth-child(1){
+  margin-bottom: 16px;
+}
+
+
+.Landing__sider button{
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 8px 24px rgba(95,155,241,.35);
+  transition: transform .3s,box-shadow .3s;
+}
+
+.Landing__sider button:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 13px 24px rgba(95,155,241,.45);
+}
+
+.Landing__sider button,
+.Landing__sider button:active,
+.Landing__sider button:hover,
+.Landing__sider button:focus,
+.Landing__sider button:focus-within {
+  background-color: var(--color-blue-darkest);
+}
+
+.Landing__content {
+  background-image: url('../../assets/img/landing.jpg');
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.Landing__footer {
+  background-color: white;
+}
