@@ -5,6 +5,7 @@
 }
 
 .Navbar__logo {
+  color: black;
   font-size: 24px;
   font-family: 'Merienda One', cursive;
 }

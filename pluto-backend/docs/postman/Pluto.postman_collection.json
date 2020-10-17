@@ -82,7 +82,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"test\",\n  \"password\": \"test@123\",\n  \"name\": \"test\",\n  \"college\": \"DTU\",\n  \"github\": \"http://github.com/dabasajay\"\n}",
+							"raw": "{\n  \"username\": \"test5\",\n  \"password\": \"test@123\",\n  \"name\": \"test\",\n  \"college\": \"DTU\",\n  \"github\": \"http://github.com/dabasajay\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -601,6 +601,34 @@
 					"response": []
 				}
 			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Agg",
+			"item": [
+				{
+					"name": "Users and projects count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/agg/count/userandproject",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agg",
+								"count",
+								"userandproject"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "For aggregation queries.",
 			"protocolProfileBehavior": {}
 		}
 	],

@@ -6,6 +6,10 @@ const createURL = (baseURL = '', urlParam = '', queryParam = {}) => {
   return `${baseURL}/${urlParam}${new URLSearchParams(queryParam).toString()}`;
 };
 
+const createErrorMessage = (err: any) => ({
+  message: !isEmpty(err?.response?.data?.message) ? err?.response?.data?.message : 'Failed to connect to server!'
+});
+
 const API = {
   auth: {
     post: async (data: {}) => {
@@ -14,8 +18,7 @@ const API = {
         const res = await axios.post(createURL(BaseURL), data);
         return { ...res.data };
       } catch (err) {
-        const { message } = err.response.data;
-        return { message: !isEmpty(message) ? message : 'Failed to connect to server!' };
+        return createErrorMessage(err);
       }
     },
   },
@@ -26,20 +29,29 @@ const API = {
         const res = await axios.post(createURL(BaseURL), data);
         return { ...res.data };
       } catch (err) {
-        const { message } = err.response.data;
-        return { message: !isEmpty(message) ? message : 'Failed to connect to server!' };
+        return createErrorMessage(err);
+      }
+    },
+  },
+  project: {
+    get: async (urlParam = '', queryParam = {}) => {
+      const { PROJECT: BaseURL } = API_ENDPOINTS;
+      try {
+        const res = await axios.get(createURL(BaseURL, urlParam, queryParam));
+        return { ...res.data };
+      } catch (err) {
+        return createErrorMessage(err);
       }
     },
   },
   agg: {
-    get: async () => {
+    get: async (urlParam = '', queryParam = {}) => {
       const { AGG: BaseURL } = API_ENDPOINTS;
       try {
-        const res = await axios.get(createURL(BaseURL + '/count/userandproject'));
+        const res = await axios.get(createURL(BaseURL, urlParam, queryParam));
         return { ...res.data };
       } catch (err) {
-        const { message } = err.response.data;
-        return { message: !isEmpty(message) ? message : 'Failed to connect to server!' };
+        return createErrorMessage(err);
       }
     },
   },

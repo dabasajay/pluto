@@ -6,6 +6,41 @@ const logger = require('../../utils/logger');
 const { API_MESSAGES } = require('../../constants');
 
 /*
+  @route: GET /project/hot
+  @desc: Get hot projects - sort by comments (desc) and likes (desc)
+  @access: public
+*/
+router.get('/hot', async (req, res) => {
+  try {
+    const Project = db.models.Project;
+    const foundProjects = await Project.findAll({
+      order: [
+        ['comments', 'DESC'],
+        ['likes', 'DESC'],
+        ['id', 'ASC'],
+      ],
+      limit: 8,
+      attributes: ['id', 'name', 'url', 'shortDesc', 'likes', 'comments'],
+    });
+    const projects = [];
+    // Get objects in plain form.
+    foundProjects.forEach(project => projects.push(project.get({ plain: true })));
+    return res
+      .status(200)
+      .json({
+        projects
+      });
+  } catch (err) {
+    logger.error(err.stack);
+    return res
+      .status(400)
+      .json({
+        message: API_MESSAGES.UNKNOWN_ERROR
+      });
+  }
+});
+
+/*
   @route: GET /project/user/:userId
   @desc: Get all projects of a user
   @access: public

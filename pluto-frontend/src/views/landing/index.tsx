@@ -15,7 +15,7 @@ function Landing() {
   const history = useHistory();
   useEffect(() => {
     async function work() {
-      const res = await API.agg.get();
+      const res = await API.agg.get('/count/userandproject');
       if (res.message == null) {
         const { users, projects } = res;
         setStats({ users, projects });

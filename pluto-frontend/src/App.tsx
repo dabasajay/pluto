@@ -1,16 +1,20 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import jwt_decode from 'jwt-decode';
 
 import PrivateRoute from './components/PrivateRoute';
 
 import Landing from './views/landing';
 import { Login, SignUp } from './views/auth/';
+import User from './views/user';
 import Profile from './views/profile';
 import Project from './views/project';
 import Liked from './views/liked';
 import Search from './views/search';
+import Hot from './views/hot';
+import MyProjects from './views/myprojects';
 
 import store from './store';
 import { logout } from './actions/auth';
@@ -45,13 +49,19 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
+        <Helmet>
+          <title>Pluto</title>
+        </Helmet>
         <Switch>
           <Route exact path='/' component={Landing} />
           <Route exact path='/signin' component={Login} />
           <Route exact path='/signup' component={SignUp} />
-          <Route exact path='/profile' component={Profile} />
-          <Route exact path='/project' component={Project} />
+          <Route exact path='/user/:userId' component={User} />
+          <PrivateRoute exact path='/profile' component={Profile} />
+          <Route exact path='/project/:projectId' component={Project} />
+          <Route exact path='/hot' component={Hot} />
           <PrivateRoute exact path='/liked' component={Liked} />
+          <PrivateRoute exact path='/myprojects' component={MyProjects} />
           <Route exact path='/search' component={Search} />
           {/* Default route */}
           <Route component={Login} />

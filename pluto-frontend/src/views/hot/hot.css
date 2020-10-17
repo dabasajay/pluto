@@ -1,0 +1,8 @@
+.Hot__content {
+  padding: 20px 40px;
+  background-color: white;
+  background-image: url('../../assets/img/hotfire.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
