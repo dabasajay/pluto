@@ -7,7 +7,7 @@
 Pluto is a platform where college students showcase their tech projects and see what their peers are working on.
 
 <p align="center">
-  <img src="https://github.com/dabasajay/pluto/raw/master/imgs/landing.png" width="70%" title="Landing page of Pluto" alt="Landing page of Pluto">
+  <img src="https://github.com/dabasajay/pluto/raw/master/imgs/landing.png" width="80%" title="Landing page of Pluto" alt="Landing page of Pluto">
 </p>
 
 Pluto users are able to
