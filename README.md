@@ -6,6 +6,10 @@
 
 Pluto is a platform where college students showcase their tech projects and see what their peers are working on.
 
+<p align="center">
+  <img src="https://github.com/dabasajay/pluto/raw/master/imgs/landing.png" width="70%" title="Landing page of Pluto" alt="Landing page of Pluto">
+</p>
+
 Pluto users are able to
 <ul type="square">
   <li>login/signup on the platform with high security.</li>
@@ -18,9 +22,10 @@ Pluto users are able to
 ## Table of Contents
 
 1. [Features](#1-features)
-2. [ER Model](#2-er-model)
-3. [Tools and Tech used](#3-tools-and-tech-used)
-4. [References](#4-references)
+2. [Gallery](#2-gallery)
+3. [ER Model](#3-er-model)
+4. [Tools and Tech used](#4-tools-and-tech-used)
+5. [References](#5-references)
 
 ## 1. Features
 
@@ -34,13 +39,29 @@ Pluto users are able to
 	<li><strong><code>.env</code></strong> configuration file for environment variables.</li>
 </ul>
 
-## 2. ER Model
+## 2. Gallery
+
+<p align="center">
+  <img src="https://github.com/dabasajay/pluto/raw/master/imgs/signup.png" width="70%" title="Signup page of Pluto" alt="Signup page of Pluto">
+</p>
+
+<p align="center">
+  <img src="https://github.com/dabasajay/pluto/raw/master/imgs/signin.png" width="70%" title="Signin page of Pluto" alt="Signin page of Pluto">
+</p>
+
+<p align="center">
+  <img src="https://github.com/dabasajay/pluto/raw/master/imgs/hot.png" width="70%" title="Hot projects page of Pluto" alt="Hot projects page of Pluto">
+</p>
+
+[See all](https://github.com/dabasajay/pluto/tree/master/imgs)
+
+## 3. ER Model
 
 <p align="center">
   <img src="https://github.com/dabasajay/pluto/raw/master/pluto-backend/docs/model/er_model.png" width="70%" title="ER Model of Pluto" alt="ER Model of Pluto">
 </p>
 
-## 3. Tools and Tech used
+## 4. Tools and Tech used
 
 <ul type="square">
   <li>Node, Express for backend development</li>
@@ -52,7 +73,7 @@ Pluto users are able to
 </ul>
 
 
-## 4. References
+## 5. References
 
 <ul type="square">
 	<li><a href="https://reactjs.org/docs/getting-started.html">React</a></li>
