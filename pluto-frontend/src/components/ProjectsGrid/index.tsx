@@ -65,7 +65,7 @@ function ProjectCard({ data } : { data: ProjectType }) {
   const history = useHistory();
   const cover = url != null ? (
     <img
-      alt="project-image"
+      alt="project"
       src={url}
     />
   ) : (

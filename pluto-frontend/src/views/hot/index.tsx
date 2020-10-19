@@ -14,7 +14,7 @@ function Hot() {
     async function work() {
       const res = await API.project.get('/hot');
       if (res.message == null) {
-        const { users, projects } = res;
+        const { projects } = res;
         setProjects(projects);
         setIsLoading(false);
       }

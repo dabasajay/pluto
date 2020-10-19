@@ -29,7 +29,6 @@ function Landing() {
       <Navbar />
       <Layout>
         <Sider className="Landing__sider">
-          {/* <Statistic title="Users" value={112893} /> */}
           {
             isLoading
             ?

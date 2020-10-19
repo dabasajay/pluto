@@ -188,6 +188,26 @@
 			"name": "Project",
 			"item": [
 				{
+					"name": "Get hot projects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/project/hot",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"project",
+								"hot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get all projects of user",
 					"request": {
 						"method": "GET",
@@ -236,7 +256,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjAyNzY5MDQzLCJleHAiOjE2MDI3OTA2NDN9.uKwS5vS6mHpqn8SuZv2ki4VlQ0u4OuWvz3artcmm3Rc",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjAyOTM0NTQ2LCJleHAiOjE2MDI5NTYxNDZ9.3hIFNWgaeMdF5EvzuXNDPEZ0twmgbPRZzQBfxwhHt2w",
 									"type": "string"
 								}
 							]

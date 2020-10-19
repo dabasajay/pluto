@@ -23,6 +23,15 @@ const API = {
     },
   },
   user: {
+    get: async (urlParam = '', queryParam = {}) => {
+      const { USER: BaseURL } = API_ENDPOINTS;
+      try {
+        const res = await axios.get(createURL(BaseURL, urlParam, queryParam));
+        return { ...res.data };
+      } catch (err) {
+        return createErrorMessage(err);
+      }
+    },
     post: async (data: {}) => {
       const { USER: BaseURL } = API_ENDPOINTS;
       try {
